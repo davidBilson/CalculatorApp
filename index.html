@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;/*
+            background-image: linear-gradient(to bottom right, purple, blue); */
+            overflow: hidden;
+        }
+        .main {
+            max-width: 350px;
+            min-height: 410px;
+            margin: 10vh auto;
+            background: linear-gradient(to right bottom, rgba(252, 227, 0, 0.1), rgba(15, 12, 43, 0.5));
+            backdrop-filter: blur(2rem);
+            border-radius: 1px;
+            padding: 0;
+            border: none;
+            box-shadow: 0px 0px 10px rgb(148, 148, 148);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .main #display-text {
+            width: 100%;
+            padding: 5px;
+            background:rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-size: 40px;
+            text-align: right;
+            border: 1px solid black;
+            transition: 0.51s;
+        }
+        .main #display-text:focus {
+            outline: none;
+        }
+        .main .clear {
+            background:rgb(255, 187, 0);
+            color: black;
+            border: none;
+            width: 75px;
+            height: 75px;
+        }
+        .main input {
+            cursor: pointer;
+            font-size: 25px;
+            background: #000;
+            color: #fff;
+            width: 75px;
+            height: 75px;
+            border: none;
+        }
+        .calc:hover {
+            background: rgb(172, 172, 172);
+            color: rgb(0, 0, 0);
+        }
+        .finalResult:hover {   
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+    <input type="text" placeholder="00" id="display-text" >
+    <input type="reset" value="C" class="clear">
+    <input type="button" value="." class="calc">
+    <input type="button" value="/" class="calc">
+    <input type="button" value="*" class="calc">
+    <input type="button" value="7" class="calc">
+    <input type="button" value="8" class="calc">
+    <input type="button" value="9" class="calc">
+    <input type="button" value="-" class="calc">
+    <input type="button" value="4" class="calc">
+    <input type="button" value="5" class="calc">
+    <input type="button" value="6" class="calc">
+    <input type="button" value="+" class="calc">
+    <input type="button" value="3" class="calc">
+    <input type="button" value="2" class="calc">
+    <input type="button" value="1" class="calc">
+    <input type="button" value="=" class="finalResult">
+    </div>
+
+    <script>
+       $(document).ready(function(){
+           $(".calc").click(function(){
+               $("#display-text").val( $("#display-text").val() + $(this).val() );
+           });
+           $('.clear').click(function(){
+               $('#display-text').val(' ');
+           });
+           $('.finalResult').click(function(){
+               $('#display-text').val(eval($('#display-text').val()));
+           })
+       });
+    </script>
+</body>
+</html>
